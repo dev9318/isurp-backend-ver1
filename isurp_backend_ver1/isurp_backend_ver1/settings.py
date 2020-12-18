@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'isurp_backend_ver1.wsgi.application'
 DATABASES = {
     'default': {
            'ENGINE': 'djongo',
-           'NAME': 'your-db-name',
+           'NAME': 'mydb',
        }
 }
 
