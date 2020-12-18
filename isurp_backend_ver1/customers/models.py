@@ -1,8 +1,9 @@
-from django.db import models
+from djongo import models
 
 # Create your models here.
 
 class Address(models.Model):
+    _id = models.ObjectIdField()
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
@@ -17,7 +18,7 @@ class Address(models.Model):
 
 
 class Customer(models.Model):
-    id = models.ObjectsIdfield()
+    _id = models.ObjectIdField()
     email = models.EmailField()
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
