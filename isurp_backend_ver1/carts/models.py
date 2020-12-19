@@ -10,19 +10,19 @@ class CartFee(models.Model):
 
 
 class CartContent(models.Model):
-#   List<dynamic> addons;
-    String key = models.CharField(max_length=100)
+    #   List<dynamic> addons;
+    key = models.CharField(max_length=100)
     productId = models.IntegerField()
     variationId = models.IntegerField()
     # dynamic variation;
     quantity = models.IntegerField()
     dataHash = models.CharField(max_length=100)
-#   //LineTaxData lineTaxData;
+    #   //LineTaxData lineTaxData;
     # double lineSubtotal = models.CharField(max_length=100)
     # double lineSubtotalTax = models.CharField(max_length=100)
     # double lineTotal = models.CharField(max_length=100)
     # double lineTax = models.CharField(max_length=100)
-#   Data data;
+    #   Data data;
     name = models.CharField(max_length=100)
     thumb = models.CharField(max_length=100)
     removeUrl = models.CharField(max_length=100)
@@ -64,21 +64,21 @@ class CartContent(models.Model):
 
 
 class CartTotals(models.Model):
-    String subtotal = models.CharField(max_length=100)
-    String subtotalTax = models.CharField(max_length=100)
-    String shippingTotal = models.CharField(max_length=100)
-    String shippingTax = models.CharField(max_length=100)
-#   //List<dynamic> shippingTaxes;
-    String discountTotal = models.CharField(max_length=100)
-    String discountTax = models.CharField(max_length=100)
-    String cartContentsTotal = models.CharField(max_length=100)
-    String cartContentsTax = models.CharField(max_length=100)
-#   //List<dynamic> cartContentsTaxes;
-    String feeTotal = models.CharField(max_length=100)
-    String feeTax = models.CharField(max_length=100)
-#   //List<dynamic> feeTaxes;
-    String total = models.CharField(max_length=100)
-    String totalTax = models.CharField(max_length=100)
+    subtotal = models.CharField(max_length=100)
+    subtotalTax = models.CharField(max_length=100)
+    shippingTotal = models.CharField(max_length=100)
+    shippingTax = models.CharField(max_length=100)
+    #   //List<dynamic> shippingTaxes;
+    discountTotal = models.CharField(max_length=100)
+    discountTax = models.CharField(max_length=100)
+    cartContentsTotal = models.CharField(max_length=100)
+    cartContentsTax = models.CharField(max_length=100)
+    #   //List<dynamic> cartContentsTaxes;
+    feeTotal = models.CharField(max_length=100)
+    feeTax = models.CharField(max_length=100)
+    #   //List<dynamic> feeTaxes;
+    total = models.CharField(max_length=100)
+    totalTax = models.CharField(max_length=100)
 
 
 # class CartSessionData(models.Model):
@@ -107,18 +107,19 @@ class CartTotals(models.Model):
 #   List<dynamic> taxes;
 
 class CartModel(models.Model):
-  #List<dynamic> appliedCoupons;
+    #List<dynamic> appliedCoupons;
+    id = models.AutoField(primary_key=True)
     taxDisplayCart = models.CharField(max_length=100)
     # CartSessionData cartSessionData = 
-  #List<dynamic> couponAppliedCount;
-#   List<dynamic> couponDiscountTotals;
-#   List<dynamic> couponDiscountTaxTotals;
+    #List<dynamic> couponAppliedCount;
+    #   List<dynamic> couponDiscountTotals;
+    #   List<dynamic> couponDiscountTaxTotals;
     cartContents = models.ManyToManyField(CartContent)
     cartNonce = models.CharField(max_length=100)
     cartTotals = models.ManyToManyField(CartTotals)
-#   List<dynamic> chosenShipping;
-#   Points points;
-#   int purchasePoint;
+    #   List<dynamic> chosenShipping;
+    #   Points points;
+    #   int purchasePoint;
     currency = models.CharField(max_length=100)
     cartFees = models.ManyToManyField(CartFee)
 #   List<Coupon> coupons;
