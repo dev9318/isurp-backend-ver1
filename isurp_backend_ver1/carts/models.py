@@ -3,7 +3,7 @@ from djongo import models
 # Create your models here.
 
 class CartFee(models.Model):
-    Id = models.CharField(max_length=100)
+    id = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     amount = models.CharField(max_length=100)
     total = models.CharField(max_length=100)
@@ -64,6 +64,7 @@ class CartContent(models.Model):
 
 
 class CartTotals(models.Model):
+    id = models.AutoField(primary_key=True)
     subtotal = models.CharField(max_length=100)
     subtotalTax = models.CharField(max_length=100)
     shippingTotal = models.CharField(max_length=100)
