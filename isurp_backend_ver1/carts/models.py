@@ -115,12 +115,12 @@ class CartModel(models.Model):
     #List<dynamic> couponAppliedCount;
     #   List<dynamic> couponDiscountTotals;
     #   List<dynamic> couponDiscountTaxTotals;
-    cartContents = models.ManyToManyField(CartContent)
+    cartContents = models.ArrayField(model_container = CartContent)
     cartNonce = models.CharField(max_length=100)
-    cartTotals = models.ManyToManyField(CartTotals)
+    cartTotals = models.ArrayField(model_container = CartTotals)
     #   List<dynamic> chosenShipping;
     #   Points points;
     #   int purchasePoint;
     currency = models.CharField(max_length=100)
-    cartFees = models.ManyToManyField(CartFee)
+    cartFees = models.ArrayField(model_container = CartFee)
 #   List<Coupon> coupons;
