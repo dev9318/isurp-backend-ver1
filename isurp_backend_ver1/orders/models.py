@@ -2,6 +2,39 @@ from djongo import models
 from "isurp_backend_ver1\customers\models" import Address
 
 # Create your models here.
+
+
+class LineItem(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    productId = models.IntegerField()
+    variationId = models.IntegerField()
+    quantity = models.IntegerField()
+    taxClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    subtotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    subtotalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    total = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    taxes = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # List<dynamic> taxes = 
+    #   List<LineItemMetaDatum> metaData;
+    sku = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    price = models.DecimalField()
+
+
+
+class ShippingLine(models.Model):
+    id = models.AutoField(primary_key=True)
+    methodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    methodId = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    instanceId = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    total = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    taxes = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # List<dynamic> taxes 
+#   List<MetaDatum> metaData;
+
+
 class order(models.Model):
     id = models.AutoField(primary_key=True)
     parentId = models.IntegerField()
@@ -41,45 +74,16 @@ class order(models.Model):
     dateCompleted = models.DateTimeField()
     dateCompletedGmt = models.DateTimeField()
     cartHash = models.CharField(max_length=100, default = DEFAULT_VALUE)
-#   List<MetaDatum> metaData;
-  List<LineItem> lineItems;
-  List<dynamic> taxLines;
-  List<ShippingLine> shippingLines;
-  List<dynamic> feeLines;
-#   List<dynamic> couponLines;
-  List<dynamic> refunds;
+    #   List<MetaDatum> metaData;
+    lineItems = models.ArrayField(
+        model_container = LineItem
+    )
+    # List<dynamic> taxLines;
+    shippingLines = models.ArrayField(
+        model_container = ShippingLine
+    )
+    # List<dynamic> feeLines;
+    #   List<dynamic> couponLines;
+    # List<dynamic> refunds
     decimals = models.IntegerField()
-
-
-
-class LineItem(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    productId = models.IntegerField()
-    variationId = models.IntegerField()
-    quantity = models.IntegerField()
-    taxClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    subtotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    subtotalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    total = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  List<dynamic> taxes
-#   List<LineItemMetaDatum> metaData;
-    sku = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    price = models.DecimalField()
-
-
-
-class ShippingLine(models.Model):
-    id = models.AutoField(primary_key=True)
-    methodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    methodId = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    instanceId = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    total = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  List<dynamic> taxes 
-#   List<MetaDatum> metaData;
-
-
-
   
