@@ -41,3 +41,6 @@ class Customer(models.Model):
     avatarUrl = models.CharField(max_length=100, default = DEFAULT_VALUE)
     guest = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
+
+    def __str__(self):
+        self.uid
