@@ -22,7 +22,7 @@ class order(models.Model):
     cartTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
     total = models.CharField(max_length=100, default = DEFAULT_VALUE)
     totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  bool pricesIncludeTax;
+    pricesIncludeTax = models.BooleanField()
     customerId = models.IntegerField()
     customerIpAddress = models.CharField(max_length=100, default = DEFAULT_VALUE)
     customerUserAgent = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -48,29 +48,29 @@ class order(models.Model):
   List<dynamic> feeLines;
 #   List<dynamic> couponLines;
   List<dynamic> refunds;
-  int decimals;
+    decimals = models.IntegerField()
 
 
 
-  class LineItem(models.Model):
+class LineItem(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, default = DEFAULT_VALUE)
     productId = models.IntegerField()
     variationId = models.IntegerField()
     quantity = models.IntegerField()
-  String taxClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String subtotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String subtotalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String total = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    taxClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    subtotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    subtotalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    total = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
   List<dynamic> taxes
 #   List<LineItemMetaDatum> metaData;
-  String sku = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  double price
+    sku = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    price = models.DecimalField()
 
 
 
-  class ShippingLine(models.Model):
+class ShippingLine(models.Model):
     id = models.AutoField(primary_key=True)
     methodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
     methodId = models.CharField(max_length=100, default = DEFAULT_VALUE)
