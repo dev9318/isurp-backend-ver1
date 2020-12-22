@@ -1,8 +1,23 @@
 from djongo import models
-from "isurp_backend_ver1\customers\models" import Address
 
 # Create your models here.
 
+DEFAULT_VALUE = ""
+
+class Address(models.Model):
+    id = models.AutoField(primary_key=True)
+    # _id = models.ObjectIdField()
+    firstName = models.CharField(max_length=100)
+    lastName = models.CharField(max_length=100)
+    company = models.CharField(max_length=100)
+    address1 = models.TextField()
+    address2 = models.TextField()
+    city = models.CharField(max_length=100)
+    postcode = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=100)
 
 class LineItem(models.Model):
     id = models.AutoField(primary_key=True)
