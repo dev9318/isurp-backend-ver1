@@ -16,26 +16,26 @@ class order(models.Model):
     DateTime dateModifiedGmt;
     discountTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
     discountTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    String shippingTotal;
-    String shippingTax;
-    String cartTax;
-    String total;
-  String totalTax;
+    String shippingTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    String shippingTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    String cartTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    String total = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
   bool pricesIncludeTax;
   int customerId;
-  String customerIpAddress;
-  String customerUserAgent;
-  String customerNote;
+  String customerIpAddress = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String customerUserAgent = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String customerNote = models.CharField(max_length=100, default = DEFAULT_VALUE)
   Address billing;
   Address shipping;
-  String paymentMethod;
-  String paymentMethodTitle;
-  String transactionId;
+  String paymentMethod = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String paymentMethodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String transactionId = models.CharField(max_length=100, default = DEFAULT_VALUE)
   dynamic datePaid;
   dynamic datePaidGmt;
   dynamic dateCompleted;
   dynamic dateCompletedGmt;
-  String cartHash;
+  String cartHash = models.CharField(max_length=100, default = DEFAULT_VALUE)
 #   List<MetaDatum> metaData;
   List<LineItem> lineItems;
   List<dynamic> taxLines;
@@ -49,30 +49,30 @@ class order(models.Model):
 
   class LineItem(models.Model):
     id = models.AutoField(primary_key=True)
-  String name;
+  String name = models.CharField(max_length=100, default = DEFAULT_VALUE)
   int productId;
   int variationId;
   int quantity;
-  String taxClass;
-  String subtotal;
-  String subtotalTax;
-  String total;
-  String totalTax;
-  List<dynamic> taxes;
+  String taxClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String subtotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String subtotalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String total = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  List<dynamic> taxes
 #   List<LineItemMetaDatum> metaData;
-  String sku;
-  double price;
+  String sku = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  double price
 
 
 
   class ShippingLine(models.Model):
     id = models.AutoField(primary_key=True)
-  String methodTitle;
-  String methodId;
-  String instanceId;
-  String total;
-  String totalTax;
-  List<dynamic> taxes;
+  String methodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String methodId = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String instanceId = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String total = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  String totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+  List<dynamic> taxes 
 #   List<MetaDatum> metaData;
 
 
