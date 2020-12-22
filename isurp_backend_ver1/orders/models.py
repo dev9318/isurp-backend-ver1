@@ -1,41 +1,46 @@
 from djongo import models
+from "isurp_backend_ver1\customers\models" import Address
 
 # Create your models here.
 class order(models.Model):
     id = models.AutoField(primary_key=True)
-    int parentId;
+    parentId = models.IntegerField()
     number = models.CharField(max_length=100, default = DEFAULT_VALUE)
     orderKey = models.CharField(max_length=100, default = DEFAULT_VALUE)
     createdVia = models.CharField(max_length=100, default = DEFAULT_VALUE)
     version = models.CharField(max_length=100, default = DEFAULT_VALUE)
     status = models.CharField(max_length=100, default = DEFAULT_VALUE)
     currency = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    DateTime dateCreated;
-    DateTime dateCreatedGmt;
-    DateTime dateModified;
-    DateTime dateModifiedGmt;
+    DateTime dateCreated = models.DateTimeField()
+    DateTime dateCreatedGmt = models.DateTimeField()
+    DateTime dateModified = models.DateTimeField()
+    DateTime dateModifiedGmt = models.DateTimeField()
     discountTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
     discountTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    String shippingTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    String shippingTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    String cartTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    String total = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    shippingTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    shippingTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    cartTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    total = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
   bool pricesIncludeTax;
-  int customerId;
-  String customerIpAddress = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String customerUserAgent = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String customerNote = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  Address billing;
-  Address shipping;
-  String paymentMethod = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String paymentMethodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String transactionId = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  dynamic datePaid;
-  dynamic datePaidGmt;
-  dynamic dateCompleted;
-  dynamic dateCompletedGmt;
-  String cartHash = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    customerId = models.IntegerField()
+    customerIpAddress = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    customerUserAgent = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    customerNote = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    billing = models.EmbeddedField(
+        model_container = Address
+    )
+    shipping = models.EmbeddedField(
+        model_container = Address
+    )
+    paymentMethod = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    paymentMethodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    transactionId = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    datePaid = models.DateTimeField()
+    datePaidGmt = models.DateTimeField()
+    dateCompleted = models.DateTimeField()
+    dateCompletedGmt = models.DateTimeField()
+    cartHash = models.CharField(max_length=100, default = DEFAULT_VALUE)
 #   List<MetaDatum> metaData;
   List<LineItem> lineItems;
   List<dynamic> taxLines;
@@ -49,10 +54,10 @@ class order(models.Model):
 
   class LineItem(models.Model):
     id = models.AutoField(primary_key=True)
-  String name = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  int productId;
-  int variationId;
-  int quantity;
+    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    productId = models.IntegerField()
+    variationId = models.IntegerField()
+    quantity = models.IntegerField()
   String taxClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
   String subtotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
   String subtotalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -67,11 +72,11 @@ class order(models.Model):
 
   class ShippingLine(models.Model):
     id = models.AutoField(primary_key=True)
-  String methodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String methodId = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String instanceId = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String total = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    methodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    methodId = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    instanceId = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    total = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
   List<dynamic> taxes 
 #   List<MetaDatum> metaData;
 
