@@ -1,20 +1,24 @@
 from djongo import models
 
+
+DEFAULT_VALUE = ""
+
 # Create your models here.
 
 
 class ProductImage(models.Model):
-    int id;
+    _id = models.ObjectIdField()
     productId = models.CharField(max_length=100)
-    DateTime dateCreated = models.DateTimeField()
-    DateTime dateCreatedGmt = models.DateTimeField()
-    DateTime dateModified = models.DateTimeField()
-    DateTime dateModifiedGmt = models.DateTimeField()
+    dateCreated = models.DateTimeField()
+    dateCreatedGmt = models.DateTimeField()
+    dateModified = models.DateTimeField()
+    dateModifiedGmt = models.DateTimeField()
     src = models.CharField(max_length=100, default = DEFAULT_VALUE)
     name = models.CharField(max_length=100, default = DEFAULT_VALUE)
 #   String alt;
 
 class Dimensions(models.Model):
+    _id = models.ObjectIdField()
     length = models.CharField(max_length=100, default = DEFAULT_VALUE)
     width = models.CharField(max_length=100, default = DEFAULT_VALUE)
     height = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -22,14 +26,14 @@ class Dimensions(models.Model):
 
 
 class ProductCategory(models.Model):
-    int id;
-    String name = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    _id = models.ObjectIdField()
+    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
     slug = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
 
 class Product(models.Model):
-    int id;
+    _id = models.ObjectIdField()
     productId = models.CharField(max_length=100)
     name = models.CharField(max_length=100, default = DEFAULT_VALUE)
     slug = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -61,41 +65,49 @@ class Product(models.Model):
     #   List<dynamic> downloads;
     #     downloadLimit = models.IntegerField()
     #     downloadExpiry = models.IntegerField()
-  String externalUrl = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String buttonText = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String taxStatus = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String taxClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  bool manageStock = models.BooleanField()
+    externalUrl = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    buttonText = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    taxStatus = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    #   taxClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    #   bool manageStock = models.BooleanField()
     stockQuantity = models.IntegerField()
-  String stockStatus = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  String backOrders = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  bool backordersAllowed = models.BooleanField()
-  bool backordered = models.BooleanField()
-  bool soldIndividually = models.BooleanField()
+    #   String stockStatus = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    #   String backOrders = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    #   bool backordersAllowed = models.BooleanField()
+    #   bool backordered = models.BooleanField()
+    soldIndividually = models.BooleanField()
     weight = models.CharField(max_length=100, default = DEFAULT_VALUE)
     dimensions = models.EmbeddedField(model_container= Dimensions)
-  bool shippingRequired = models.BooleanField()
-  bool shippingTaxable = models.BooleanField()
-  String shippingClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
-  int shippingClassId = models.IntegerField()
-  bool reviewsAllowed = models.BooleanField()
-  String averageRating = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    shippingRequired = models.BooleanField()
+    #   bool shippingTaxable = models.BooleanField()
+    shippingClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    shippingClassId = models.IntegerField()
+    reviewsAllowed = models.BooleanField()
+    averageRating = models.CharField(max_length=100, default = DEFAULT_VALUE)
     ratingCount = models.IntegerField()
-  List<int> relatedIds;
-  List<dynamic> upsellIds;
-  List<dynamic> crossSellIds;
+    List<int> relatedIds
+    List<dynamic> upsellIds
+    List<dynamic> crossSellIds
     parentId = models.IntegerField()
-  String purchaseNote = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # purchaseNote = models.CharField(max_length=100, default = DEFAULT_VALUE)
     categories = models.ArrayField(model_container = ProductCategory)
-#   List<dynamic> tags;
-  List<ProductImage> images = models.ArrayField(model_container = ProductImage)
-  List<Attribute> attributes;
-  List<DefaultAttribute> defaultAttributes;
-  List<dynamic> variations;
-#   List<dynamic> groupedProducts;
+    #   List<dynamic> tags;
+    images = models.ArrayField(model_container = ProductImage)
+    List<Attribute> attributes
+    List<DefaultAttribute> defaultAttributes
+    List<dynamic> variations
+    #   List<dynamic> groupedProducts;
     menuOrder = models.IntegerField()
-#   List<dynamic> metaData;
-#   Links links;
+    #   List<dynamic> metaData;
+    #   Links links;
     decimals = models.IntegerField()
     vendor = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
+
+class Attribute(models.Model):
+    _id = models.ObjectIdField()
+    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    position = models.IntegerField()
+    visible = models.BooleanField()
+    variation = models.BooleanField()
+#   List<String> options;
