@@ -5,8 +5,8 @@ from djongo import models
 DEFAULT_VALUE = ""
 
 class Address(models.Model):
-    id = models.AutoField(primary_key=True)
-    # _id = models.ObjectIdField()
+    # id = models.AutoField(primary_key=True)
+    _id = models.ObjectIdField()
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
@@ -21,9 +21,9 @@ class Address(models.Model):
 
 
 class Customer(models.Model):
-    id = models.AutoField(primary_key=True)
+    # id = models.AutoField(primary_key=True)
     uid = models.CharField(max_length=100)
-    # _id = models.ObjectIdField()
+    _id = models.ObjectIdField()
     email = models.EmailField()
     firstName = models.CharField(max_length=100, default = DEFAULT_VALUE)
     lastName = models.CharField(max_length=100, default = DEFAULT_VALUE)
