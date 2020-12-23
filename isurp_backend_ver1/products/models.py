@@ -5,6 +5,19 @@ DEFAULT_VALUE = ""
 
 # Create your models here.
 
+class Attribute(models.Model):
+    _id = models.ObjectIdField()
+    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    position = models.IntegerField()
+    visible = models.BooleanField()
+    variation = models.BooleanField()
+#   List<String> options;
+
+class DefaultAttribute(models.Model):
+    _id = models.ObjectIdField()
+    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # option = models.CharField(max_length=100, default = DEFAULT_VALUE)
+
 
 class ProductImage(models.Model):
     _id = models.ObjectIdField()
@@ -85,17 +98,17 @@ class Product(models.Model):
     reviewsAllowed = models.BooleanField()
     averageRating = models.CharField(max_length=100, default = DEFAULT_VALUE)
     ratingCount = models.IntegerField()
-    List<int> relatedIds
-    List<dynamic> upsellIds
-    List<dynamic> crossSellIds
+    # List<int> relatedIds
+    # List<dynamic> upsellIds
+    # List<dynamic> crossSellIds
     parentId = models.IntegerField()
     # purchaseNote = models.CharField(max_length=100, default = DEFAULT_VALUE)
     categories = models.ArrayField(model_container = ProductCategory)
     #   List<dynamic> tags;
     images = models.ArrayField(model_container = ProductImage)
-    List<Attribute> attributes
-    List<DefaultAttribute> defaultAttributes
-    List<dynamic> variations
+    attributes = models.ArrayField(model_container = Attribute)
+    defaultAttributes =  models.ArrayField(model_container=DefaultAttribute)
+    # List<dynamic> variations
     #   List<dynamic> groupedProducts;
     menuOrder = models.IntegerField()
     #   List<dynamic> metaData;
@@ -104,10 +117,15 @@ class Product(models.Model):
     vendor = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
-class Attribute(models.Model):
+class VendorReviews(models.Model):
     _id = models.ObjectIdField()
-    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    position = models.IntegerField()
-    visible = models.BooleanField()
-    variation = models.BooleanField()
-#   List<String> options;
+    id = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    vendorId = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    authorId = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    authorName = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    authorEmail = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    reviewTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    reviewDescription = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    reviewRating = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    approved = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    created = models.DateTimeField()
