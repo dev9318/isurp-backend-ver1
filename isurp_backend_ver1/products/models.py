@@ -5,6 +5,16 @@ DEFAULT_VALUE = ""
 
 # Create your models here.
 
+class Collection(models.Model):
+    href = models.CharField(max_length=100, default = DEFAULT_VALUE)
+
+
+class Links(models.Model):
+    self = models.ArrayField(model_container = Collection)
+    collection =  models.ArrayField(model_container = Collection)
+
+
+
 class Attribute(models.Model):
     _id = models.ObjectIdField()
     name = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -129,3 +139,26 @@ class VendorReviews(models.Model):
     reviewRating = models.CharField(max_length=100, default = DEFAULT_VALUE)
     approved = models.CharField(max_length=100, default = DEFAULT_VALUE)
     created = models.DateTimeField()
+
+
+class Address(models.Model):
+  String street1;
+  String street2;
+  String city;
+  String zip;
+  String country;
+  String state;
+
+
+class StoreModel(models.Model):
+  int id;
+  String name;
+  String icon;
+  String banner;
+  Address address;
+  String description;
+  String latitude;
+  String longitude;
+  double averageRating;
+  int ratingCount;
+  int productsCount;
