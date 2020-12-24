@@ -142,23 +142,23 @@ class VendorReviews(models.Model):
 
 
 class Address(models.Model):
-  String street1;
-  String street2;
-  String city;
-  String zip;
-  String country;
-  String state;
+    street1 = models.TextField()
+    street2 = models.TextField()
+    city = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    zip = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    country = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    state = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
 class StoreModel(models.Model):
-  int id;
-  String name;
-  String icon;
-  String banner;
-  Address address;
-  String description;
-  String latitude;
-  String longitude;
-  double averageRating;
-  int ratingCount;
-  int productsCount;
+    _id = models.ObjectIdField()
+    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    icon = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    banner = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    address = models.EmbeddedField(model_container = Address)
+    description = models.TextField()
+    latitude = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    longitude = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    averageRating = models.DecimalField()
+    ratingCount = models.IntegerField()
+    productsCount = models.IntegerField()
