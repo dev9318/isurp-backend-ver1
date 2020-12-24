@@ -4,10 +4,10 @@ from djongo import models
 
 
 class Comment(models.Model):
-  int _id;
-  int post;
-  int parent;
-  int author;
+    _id = models.ObjectIdField()
+    post = models.IntegerField()
+    parent = models.IntegerField()
+    author= models.IntegerField()
     authorName = models.CharField(max_length=100, default = DEFAULT_VALUE)
     authorUrl = models.CharField(max_length=100, default = DEFAULT_VALUE)
     date = models.DateTimeField()
