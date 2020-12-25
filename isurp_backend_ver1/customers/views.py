@@ -20,18 +20,33 @@ class get_customer(APIView):
         try:
             customer_query = Customer.objects.get(uid = uid)
             data = {
-                id: json["id"] == null ? 0 : json["id"],
-                email: customer_query.email,
-                firstName: customer_query.firstName,
-                lastName: customer_query.lastName,
-                role: customer_query.role,
-                username: customer_query.username,
-                billing: customer_query.billing.,
-                shipping: json["shipping"] == null ? null : Address.fromJson(json["shipping"]),
-                isPayingCustomer: json["is_paying_customer"] == null ? null : json["is_paying_customer"],
-                ordersCount: json["orders_count"] == null ? null : json["orders_count"],
-                totalSpent: json["total_spent"] == null ? null : json["total_spent"],
-                avatarUrl: json["avatar_url"] == null ? null : json["avatar_url"],
-                guest: json["guest"] == null ? null : json["guest"],}
+                'id': customer_query._id,
+                'email': customer_query.email,
+                'firstName': customer_query.firstName,
+                'lastName': customer_query.lastName,
+                'role': customer_query.role,
+                'username': customer_query.username,
+                'billing': customer_query.billing.,
+                'shipping': json["shipping"] == null ? null : Address.fromJson(json["shipping"]),
+                'isPayingCustomer': customer_query.isPayingCustomer,
+                'ordersCount': customer_query.ordersCount,
+                'totalSpent': customer_query.totalSpent,
+                'avatarUrl': customer_query.avatarUrl,
+                'guest': customer_query.guest,}
+        except:
+            data = {'status':'No user'}
+        
+        response = json.dumps(data)
+        return Response(response, status= 200)
+
+
+class Update_Address(APIView):
+
+    authentication_classes = []
+    permission_classes = []
+
+    def post(self,request):
+        
+        
 
 
