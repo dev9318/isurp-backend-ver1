@@ -26,8 +26,8 @@ class get_customer(APIView):
                 'lastName': customer_query.lastName,
                 'role': customer_query.role,
                 'username': customer_query.username,
-                'billing': customer_query.billing.,
-                'shipping': json["shipping"] == null ? null : Address.fromJson(json["shipping"]),
+                'billing': customer_query.billing,
+                'shipping': customer_query.shipping,
                 'isPayingCustomer': customer_query.isPayingCustomer,
                 'ordersCount': customer_query.ordersCount,
                 'totalSpent': customer_query.totalSpent,
@@ -46,6 +46,7 @@ class Update_Address(APIView):
     permission_classes = []
 
     def post(self,request):
+        
         
         
 
