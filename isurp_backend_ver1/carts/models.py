@@ -1,38 +1,42 @@
 from djongo import models
 
+
+DEFAULT_VALUE = ''
+
+
 # Create your models here.
 
 class CartFee(models.Model):
     id = models.CharField(max_length=100)
-    name = models.CharField(max_length=100)
-    amount = models.CharField(max_length=100)
-    total = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    amount = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    total = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
 class CartContent(models.Model):
     #   List<dynamic> addons;
-    key = models.CharField(max_length=100)
+    key = models.CharField(max_length=100, default = DEFAULT_VALUE)
     productId = models.IntegerField()
     variationId = models.IntegerField()
     # dynamic variation;
     quantity = models.IntegerField()
-    dataHash = models.CharField(max_length=100)
+    dataHash = models.CharField(max_length=100, default = DEFAULT_VALUE)
     #   //LineTaxData lineTaxData;
     # double lineSubtotal = models.CharField(max_length=100)
     # double lineSubtotalTax = models.CharField(max_length=100)
     # double lineTotal = models.CharField(max_length=100)
     # double lineTax = models.CharField(max_length=100)
     #   Data data;
-    name = models.CharField(max_length=100)
-    thumb = models.CharField(max_length=100)
-    removeUrl = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    thumb = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    removeUrl = models.CharField(max_length=100, default = DEFAULT_VALUE)
     price = models.DecimalField()
     taxPrice = models.DecimalField()
     regularPrice = models.DecimalField()
     salesPrice = models.DecimalField()
     loadingQty =  models.BooleanField()
-    formattedPrice = models.CharField(max_length=100)
-    formattedSalesPrice = models.CharField(max_length=100)
+    formattedPrice = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    formattedSalesPrice = models.CharField(max_length=100, default = DEFAULT_VALUE)
     parentId = models.IntegerField()
 
 
@@ -65,21 +69,21 @@ class CartContent(models.Model):
 
 class CartTotals(models.Model):
     id = models.AutoField(primary_key=True)
-    subtotal = models.CharField(max_length=100)
-    subtotalTax = models.CharField(max_length=100)
-    shippingTotal = models.CharField(max_length=100)
-    shippingTax = models.CharField(max_length=100)
+    subtotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    subtotalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    shippingTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    shippingTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
     #   //List<dynamic> shippingTaxes;
-    discountTotal = models.CharField(max_length=100)
-    discountTax = models.CharField(max_length=100)
-    cartContentsTotal = models.CharField(max_length=100)
-    cartContentsTax = models.CharField(max_length=100)
+    discountTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    discountTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    cartContentsTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    cartContentsTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
     #   //List<dynamic> cartContentsTaxes;
-    feeTotal = models.CharField(max_length=100)
-    feeTax = models.CharField(max_length=100)
+    feeTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    feeTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
     #   //List<dynamic> feeTaxes;
-    total = models.CharField(max_length=100)
-    totalTax = models.CharField(max_length=100)
+    total = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
 # class CartSessionData(models.Model):
@@ -109,7 +113,7 @@ class CartTotals(models.Model):
 
 class CartModel(models.Model):
     #List<dynamic> appliedCoupons;
-    id = models.AutoField(primary_key=True)
+    _id = models.AutoField(primary_key=True)
     uid = models.CharField(max_length=100)
     taxDisplayCart = models.CharField(max_length=100)
     # CartSessionData cartSessionData = 
@@ -117,12 +121,12 @@ class CartModel(models.Model):
     #   List<dynamic> couponDiscountTotals;
     #   List<dynamic> couponDiscountTaxTotals;
     cartContents = models.ArrayField(model_container = CartContent)
-    cartNonce = models.CharField(max_length=100)
+    cartNonce = models.CharField(max_length=100, default = DEFAULT_VALUE)
     cartTotals = models.ArrayField(model_container = CartTotals)
     #   List<dynamic> chosenShipping;
     #   Points points;
     #   int purchasePoint;
-    currency = models.CharField(max_length=100)
+    currency = models.CharField(max_length=100, default = DEFAULT_VALUE)
     cartFees = models.ArrayField(model_container = CartFee)
     #   List<Coupon> coupons;
     def __str__(self):
