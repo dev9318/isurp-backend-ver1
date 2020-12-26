@@ -46,8 +46,19 @@ class Update_Address(APIView):
     permission_classes = []
 
     def post(self,request):
+        uid = request.query_params.get('uid')
+
         
         
+
+
+
+class Create_Object(APIView):
+
+    authentication_classes = []
+    permission_classes = []
+
+    def post(self,request):
         
 
 
