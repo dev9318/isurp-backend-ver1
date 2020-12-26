@@ -46,7 +46,32 @@ class Update_Address(APIView):
     permission_classes = []
 
     def post(self,request):
-        uid = request.query_params.get('uid')
+        uid = request.data.get('uid')
+        
+        try:
+            customer_query = Customer.objects.get(uid = uid)
+            customer_query.billing.firstName = request.data.get('billing_first_name')
+            customer_query.billing.lastName = request.data.get('billing_last_name')
+            # customer_query.billing.company = request.data.get('billing_first_name')
+            customer_query.billing.address1 = request.data.get('billing_address_1')
+            customer_query.billing.city = request.data.get('billing_city')
+            customer_query.billing.postcode = request.data.get('billing_postcode')
+            customer_query.billing.country = request.data.get('billing_country')
+            customer_query.billing.state = request.data.get('billing_state')
+            customer_query.billing.email = request.data.get('billing_email')
+            customer_query.billing.phone = request.data.get('billing_phone')
+
+            customer_query.save()
+
+            code = '200'
+        except:
+            code = '500'
+
+        data = json.dumps({'code':code})        
+
+        return Response(data, status = 200)
+        
+
 
         
         
