@@ -126,7 +126,7 @@ class CartModel(models.Model):
     #   List<dynamic> chosenShipping;
     #   Points points;
     #   int purchasePoint;
-    currency = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    currency = models.CharField(max_length=100, default = 'INR')
     cartFees = models.ArrayField(model_container = CartFee)
     #   List<Coupon> coupons;
     def __str__(self):
