@@ -124,4 +124,6 @@ class CartModel(models.Model):
     #   int purchasePoint;
     currency = models.CharField(max_length=100)
     cartFees = models.ArrayField(model_container = CartFee)
-#   List<Coupon> coupons;
+    #   List<Coupon> coupons;
+    def __str__(self):
+        self.uid
