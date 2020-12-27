@@ -31,3 +31,24 @@ class get_cart(APIView):
         response = json.dumps(data)
         return Response(response, status= 200)
 
+
+class remove_item(APIView):
+
+    def post(self, request):
+        uid = request.query_params.get('uid')
+
+        key = request.query_params.get('key')
+
+        try:
+            cart_query = CartModel.objects.get(uid = uid)
+            for i in range(len(cart_query.cartContents)):
+                if cart_query.cartContents[i].key == key:
+                    
+                    'cartNonce': cart_query.cartNonce,
+                    'cartTotals': cart_query.cartTotals,
+                    'currency': cart_query.currency,
+                    'cartFees': cart_query.cartFees,
+            data 
+        except:
+            data = {'status':'No user'}
+
