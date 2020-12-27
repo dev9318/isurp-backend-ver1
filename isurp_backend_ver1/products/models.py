@@ -65,7 +65,7 @@ class Product(models.Model):
     dateCreatedGmt = models.DateTimeField()
     dateModified = models.DateTimeField()
     dateModifiedGmt = models.DateTimeField()
-    type = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    type1 = models.CharField(max_length=100, default = DEFAULT_VALUE)
     status = models.CharField(max_length=100, default = DEFAULT_VALUE)
     featured = models.BooleanField()
     catalogVisibility = models.CharField(max_length=100, default = DEFAULT_VALUE)
