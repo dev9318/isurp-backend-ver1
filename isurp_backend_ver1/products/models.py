@@ -103,15 +103,15 @@ class Product(models.Model):
     dimensions = models.EmbeddedField(model_container= Dimensions)
     shippingRequired = models.BooleanField()
     #   bool shippingTaxable = models.BooleanField()
-    shippingClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    shippingClassId = models.IntegerField()
+    # shippingClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # shippingClassId = models.IntegerField()
     reviewsAllowed = models.BooleanField()
     averageRating = models.CharField(max_length=100, default = DEFAULT_VALUE)
     ratingCount = models.IntegerField()
     # List<int> relatedIds
     # List<dynamic> upsellIds
     # List<dynamic> crossSellIds
-    parentId = models.IntegerField()
+    # parentId = models.IntegerField()
     # purchaseNote = models.CharField(max_length=100, default = DEFAULT_VALUE)
     categories = models.ArrayField(model_container = ProductCategory)
     #   List<dynamic> tags;
