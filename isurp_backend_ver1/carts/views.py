@@ -41,14 +41,30 @@ class remove_item(APIView):
 
         try:
             cart_query = CartModel.objects.get(uid = uid)
+            cartContents = cart_query.cartContents[i]
+            cartFees = cart_query.cartFees
+            cartTotals = cart_query.cartTotals
+            flag = False
             for i in range(len(cart_query.cartContents)):
-                if cart_query.cartContents[i].key == key:
-                    
-                    'cartNonce': cart_query.cartNonce,
-                    'cartTotals': cart_query.cartTotals,
-                    'currency': cart_query.currency,
-                    'cartFees': cart_query.cartFees,
-            data 
+                if cartContents[i].key == key:
+                    index = i
+                    flag = True
+                    break
+            
+            if flag:
+                del cartContents[index]
+                del cartFees[index]
+                del cartTotals[index]
+            
+            cart_query.cartContents[i] = cartContents
+            cart_query.cartFees = cartFees
+            cart_query.cartTotals = cartTotals
+            
+            cart_query.save()
+            data = {'status':'deleted'}
+            
         except:
             data = {'status':'No user'}
 
+        response = json.dumps(data)
+        return Response(response,status=200)
