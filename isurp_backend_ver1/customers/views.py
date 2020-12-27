@@ -73,6 +73,37 @@ class Update_Address(APIView):
         
 
 
+class get_checkoutform(APIView):
+
+    authentication_classes = []
+    permission_classes = []
+
+    def post(self,request):
+
+        uid = request.data.get('uid')
+        
+        try:
+            customer_query = Customer.objects.get(uid = uid)
+            data = {
+            'billing_first_name': customer_query.billing.firstName,
+            'billing_last_name': customer_query.billing.lastName,
+            'billing_address_1': customer_query.billing.address1,
+            'billing_city': customer_query.billing.city,
+            'billing_postcode': customer_query.billing.postcode,
+            'billing_country': customer_query.billing.country,
+            'billing_state': customer_query.billing.state,
+            'billing_email': customer_query.billing.email,
+            'billing_phone': customer_query.billing.phone
+            }
+            # customer_query.billing.company = request.data.get('billing_first_name')
+
+            code = 200
+        except:
+            code = 500
+
+        response = json.dumps(data)        
+
+        return Response(response, status = code)
         
         
 
