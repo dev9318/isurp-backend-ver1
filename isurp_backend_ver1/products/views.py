@@ -72,3 +72,8 @@ class fetch_products():
         return Response(response, status = 200)
 
 
+# class get_product(APIView):
+
+#     def get(self,request):
+
+#         pid = request
