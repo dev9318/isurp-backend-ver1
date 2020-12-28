@@ -4,6 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
 from .models import CartModel
+from isurp_backend_ver1.products.models import Product
+import uuid
 
 # Create your views here.
 
@@ -91,7 +93,7 @@ class change_qnt(APIView):
                     break
             
             if flag:
-                cartContents[index].quantity = qnt
+                cartContents[index].quantity = int(qnt)
                 cartFees[index]
                 cartTotals[index]
             
@@ -107,3 +109,35 @@ class change_qnt(APIView):
 
         response = json.dumps(data)
         return Response(response,status=200)
+
+
+class add_to_cart(APIView):
+
+    def post(self, request):
+        uid = request.data.get('uid')
+
+        pid = request.data.get('pid')
+        pid = int(pid)
+        qnt = request.data.get('quantity')
+
+        try:
+            cart_query = CartModel.objects.get(uid = uid)
+
+            key = uuid.uuid4
+
+            cartContents = cart_query.cartContents
+            cartFees = cart_query.cartFees
+            cartTotals = cart_query.cartTotals
+            flag = False
+            product_query = Product.objects.get(_id = pid)
+            
+            if flag:
+                cartContents[index].quantity = qnt
+                cartFees[index]
+                cartTotals[index]
+            
+            cart_query.cartContents = cartContents
+            cart_query.cartFees = cartFees
+            cart_query.cartTotals = cartTotals
+            
+
