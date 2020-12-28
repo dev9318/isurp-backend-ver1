@@ -57,7 +57,6 @@ class ProductCategory(models.Model):
 
 class Product(models.Model):
     _id = models.ObjectIdField()
-    productId = models.CharField(max_length=100)
     name = models.CharField(max_length=100, default = DEFAULT_VALUE)
     slug = models.CharField(max_length=100, default = DEFAULT_VALUE)
     permalink = models.CharField(max_length=100, default = DEFAULT_VALUE)
