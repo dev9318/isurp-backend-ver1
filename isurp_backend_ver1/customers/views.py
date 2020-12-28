@@ -109,12 +109,13 @@ class get_checkoutform(APIView):
 
 
 
-class Create_Object(APIView):
+class google_signin(APIView):
 
     authentication_classes = []
     permission_classes = []
 
     def post(self,request):
-        
+        uid = request.data.get('uid')
 
+        
 

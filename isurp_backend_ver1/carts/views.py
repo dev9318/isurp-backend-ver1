@@ -132,7 +132,7 @@ class add_to_cart(APIView):
             product_query = Product.objects.get(_id = pid)
             
             if flag:
-                cartContents[index].quantity = qnt
+                cartContents[index].quantity = int(qnt)
                 cartFees[index]
                 cartTotals[index]
             
