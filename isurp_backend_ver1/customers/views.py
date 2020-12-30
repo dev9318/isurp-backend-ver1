@@ -118,5 +118,53 @@ class google_signin(APIView):
         uid = request.data.get('uid')
         name = request.data.get('name')
         email = request.data.get('email')
-        token = request.data.get('token')
+        # token = request.data.get('token')
+
+        index = len(name) - 1
+        for i in range(len(name)):
+            if name[i] == '':
+                index = i
+        first_name = name[0:index+1]
+        last_name = name[index+1:]
+
+        Customer.objects.create(
+            uid = uid,
+            firstName = first_name,
+            lastName = last_name,
+            email = email,
+            ordersCount = 0,
+            totalSpent = 0
+        )
+
+
+
+class facebook_signin(APIView):
+
+    authentication_classes = []
+    permission_classes = []
+
+    def post(self,request):
+        uid = request.data.get('uid')
+        name = request.data.get('name')
+        email = request.data.get('email')
+        # token = request.data.get('token')
+
+
+
+        index = len(name) - 1
+        for i in range(len(name)):
+            if name[i] == '':
+                index = i
+        first_name = name[0:index+1]
+        last_name = name[index+1:]
+
+        Customer.objects.create(
+            uid = uid,
+            firstName = first_name,
+            lastName = last_name,
+            email = email,
+            ordersCount = 0,
+            totalSpent = 0,
+        )
+
 

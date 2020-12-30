@@ -32,9 +32,9 @@ class Customer(models.Model):
     billing = models.EmbeddedField(
         model_container = Address
     )
-    shipping = models.EmbeddedField(
-        model_container = Address
-    )
+    # shipping = models.EmbeddedField(
+    #     model_container = Address
+    # )
     isPayingCustomer = models.BooleanField()
     ordersCount = models.IntegerField()
     totalSpent = models.CharField(max_length=100, default = DEFAULT_VALUE)
