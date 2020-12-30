@@ -116,6 +116,7 @@ class google_signin(APIView):
 
     def post(self,request):
         uid = request.data.get('uid')
-
-        
+        name = request.data.get('name')
+        email = request.data.get('email')
+        token = request.data.get('token')
 
