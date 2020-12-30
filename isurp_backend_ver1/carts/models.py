@@ -69,12 +69,12 @@ class CartContent(models.Model):
 
 class CartTotals(models.Model):
     _id = models.AutoField(primary_key=True)
-    subtotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    subtotal = models.IntegerField(max_length=100, default = DEFAULT_VALUE)
     # subtotalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
     shippingTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
     # shippingTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
     #   //List<dynamic> shippingTaxes;
-    discountTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    discountTotal = models.IntegerField(max_length=100, default = DEFAULT_VALUE)
     # discountTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
     # cartContentsTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
     # cartContentsTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -82,8 +82,8 @@ class CartTotals(models.Model):
     # feeTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
     # feeTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
     #   //List<dynamic> feeTaxes;
-    total = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    total = models.IntegerField(max_length=100, default = DEFAULT_VALUE)
+    totalTax = models.IntegerField(max_length=100, default = DEFAULT_VALUE)
 
 
 # class CartSessionData(models.Model):
