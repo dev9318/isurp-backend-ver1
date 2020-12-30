@@ -3,6 +3,7 @@ import json
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
+from isurp_backend_ver1.carts.models import CartModel
 from .models import Customer
 
 
@@ -137,6 +138,10 @@ class google_signin(APIView):
                 totalSpent = 0,
             )
 
+            CartModel.objects.create(
+                uid = uid,
+            )
+
             code = 200
         except:
             code = 400
@@ -176,6 +181,10 @@ class facebook_signin(APIView):
                 email = email,
                 ordersCount = 0,
                 totalSpent = 0,
+            )
+
+            CartModel.objects.create(
+                uid = uid,
             )
 
             code = 200
