@@ -139,5 +139,12 @@ class add_to_cart(APIView):
             cart_query.cartContents = cartContents
             cart_query.cartFees = cartFees
             cart_query.cartTotals = cartTotals
-            
+
+            code = 200
+        
+        except:
+            code = 400
+        
+        response = json.dumps({})
+        return Response(response,status=200)
 
