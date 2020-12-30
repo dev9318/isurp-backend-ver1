@@ -95,7 +95,7 @@ class change_qnt(APIView):
             if flag:
                 cartContents[index].quantity = int(qnt)
                 cartFees[index]
-                cartTotals[index]
+                cartTotals
             
             cart_query.cartContents = cartContents
             cart_query.cartFees = cartFees
@@ -131,10 +131,11 @@ class add_to_cart(APIView):
             flag = False
             product_query = Product.objects.get(_id = pid)
             
-            if flag:
-                cartContents[index].quantity = int(qnt)
-                cartFees[index]
-                cartTotals[index]
+            
+
+            cartContents[index].quantity = int(qnt)
+            cartFees[index]
+            cartTotals
             
             cart_query.cartContents = cartContents
             cart_query.cartFees = cartFees
