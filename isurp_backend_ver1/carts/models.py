@@ -129,7 +129,7 @@ class CartModel(models.Model):
     currency = models.CharField(max_length=100, default = 'INR')
     cartFees = models.ArrayField(model_container = CartFee)
 
-    objects = models.BaseManager()
+    objects = models.DjongoManager()
     #   List<Coupon> coupons;
     def __str__(self):
         self.uid
