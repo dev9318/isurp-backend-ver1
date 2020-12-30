@@ -127,14 +127,24 @@ class google_signin(APIView):
         first_name = name[0:index+1]
         last_name = name[index+1:]
 
-        Customer.objects.create(
-            uid = uid,
-            firstName = first_name,
-            lastName = last_name,
-            email = email,
-            ordersCount = 0,
-            totalSpent = 0
-        )
+        try:
+            Customer.objects.create(
+                uid = uid,
+                firstName = first_name,
+                lastName = last_name,
+                email = email,
+                ordersCount = 0,
+                totalSpent = 0,
+            )
+
+            code = 200
+        except:
+            code = 400
+        
+        data = {'message':'backend response'}
+        response = json.dumps(data)        
+
+        return Response(response, status = code)
 
 
 
