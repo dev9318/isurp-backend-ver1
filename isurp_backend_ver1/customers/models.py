@@ -41,6 +41,8 @@ class Customer(models.Model):
     avatarUrl = models.CharField(max_length=100, default = DEFAULT_VALUE)
     guest = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
+    objects = models.DjongoManager
+
 
     def __str__(self):
         self.uid
