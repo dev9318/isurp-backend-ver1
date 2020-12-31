@@ -44,8 +44,6 @@ class remove_item(APIView):
         try:
             cart_query = CartModel.objects.get(uid = uid)
             cartContents = cart_query.cartContents
-            cartFees = cart_query.cartFees
-            cartTotals = cart_query.cartTotals
             flag = False
             for i in range(len(cart_query.cartContents)):
                 if cartContents[i].key == key:
@@ -54,13 +52,11 @@ class remove_item(APIView):
                     break
             
             if flag:
+                cart_query.cartTotals.total = cart_query.cartTotals.total - cartContents[index].quantity*int(cartContents[index].formattedPrice)
                 del cartContents[index]
-                del cartFees[index]
-                del cartTotals[index]
+                
             
             cart_query.cartContents = cartContents
-            cart_query.cartFees = cartFees
-            cart_query.cartTotals = cartTotals
             
             cart_query.save()
             data = {'status':'deleted'}
@@ -93,9 +89,9 @@ class change_qnt(APIView):
                     break
             
             if flag:
+                cart_query.cartTotals.total = (int(qnt) - cartContents[index].quantity) * int(cartContents[index].formattedPrice)
                 cartContents[index].quantity = int(qnt)
-                cartFees[index]
-                cartTotals
+                
             
             cart_query.cartContents = cartContents
             cart_query.cartFees = cartFees
