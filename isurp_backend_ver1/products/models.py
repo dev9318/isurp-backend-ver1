@@ -115,11 +115,11 @@ class Product(models.Model):
     # categories = models.ArrayField(model_container = ProductCategory)
     #   List<dynamic> tags;
     images = models.ArrayField(model_container = ProductImage)
-    attributes = models.ArrayField(model_container = Attribute)
+    # attributes = models.ArrayField(model_container = Attribute)
     defaultAttributes =  models.ArrayField(model_container=DefaultAttribute)
     # List<dynamic> variations
     #   List<dynamic> groupedProducts;
-    menuOrder = models.IntegerField()
+    # menuOrder = models.IntegerField()
     #   List<dynamic> metaData;
     #   Links links;
     decimals = models.IntegerField()
