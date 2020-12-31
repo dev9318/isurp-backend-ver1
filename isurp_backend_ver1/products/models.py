@@ -93,7 +93,7 @@ class Product(models.Model):
     #   taxClass = models.CharField(max_length=100, default = DEFAULT_VALUE)
     #   bool manageStock = models.BooleanField()
     stockQuantity = models.IntegerField()
-    String stockStatus = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    stockStatus = models.CharField(max_length=100, default = DEFAULT_VALUE)
     #   String backOrders = models.CharField(max_length=100, default = DEFAULT_VALUE)
     #   bool backordersAllowed = models.BooleanField()
     #   bool backordered = models.BooleanField()

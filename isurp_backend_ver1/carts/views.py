@@ -129,7 +129,7 @@ class add_to_cart(APIView):
             
             
 
-            cartContents[index].quantity = int(qnt)
+            cartContents.
             cartFees[index]
             cartTotals
             
