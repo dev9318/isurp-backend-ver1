@@ -64,7 +64,7 @@ class Product(models.Model):
     dateCreatedGmt = models.DateTimeField()
     dateModified = models.DateTimeField()
     dateModifiedGmt = models.DateTimeField()
-    type1 = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    type1 = models.CharField(max_length=100, default = 'variable')
     status = models.CharField(max_length=100, default = DEFAULT_VALUE)
     # featured = models.BooleanField()
     # catalogVisibility = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -97,7 +97,7 @@ class Product(models.Model):
     #   String backOrders = models.CharField(max_length=100, default = DEFAULT_VALUE)
     #   bool backordersAllowed = models.BooleanField()
     #   bool backordered = models.BooleanField()
-    soldIndividually = models.BooleanField()
+    # soldIndividually = models.BooleanField()
     weight = models.CharField(max_length=100, default = DEFAULT_VALUE)
     dimensions = models.EmbeddedField(model_container= Dimensions)
     shippingRequired = models.BooleanField()
@@ -112,7 +112,7 @@ class Product(models.Model):
     # List<dynamic> crossSellIds
     # parentId = models.IntegerField()
     # purchaseNote = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    categories = models.ArrayField(model_container = ProductCategory)
+    # categories = models.ArrayField(model_container = ProductCategory)
     #   List<dynamic> tags;
     images = models.ArrayField(model_container = ProductImage)
     attributes = models.ArrayField(model_container = Attribute)
@@ -128,7 +128,6 @@ class Product(models.Model):
 
 class VendorReviews(models.Model):
     _id = models.ObjectIdField()
-    id = models.CharField(max_length=100, default = DEFAULT_VALUE)
     vendorId = models.CharField(max_length=100, default = DEFAULT_VALUE)
     authorId = models.CharField(max_length=100, default = DEFAULT_VALUE)
     authorName = models.CharField(max_length=100, default = DEFAULT_VALUE)
