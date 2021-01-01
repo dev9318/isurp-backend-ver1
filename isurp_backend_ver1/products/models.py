@@ -74,12 +74,12 @@ class Product(models.Model):
     price = models.CharField(max_length=100, default = DEFAULT_VALUE)
     regularPrice = models.CharField(max_length=100, default = DEFAULT_VALUE)
     salePrice = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    dateOnSaleFrom = models.DateTimeField()
-    dateOnSaleFromGmt = models.DateTimeField()
-    dateOnSaleTo = models.DateTimeField()
-    dateOnSaleToGmt = models.DateTimeField()
+    # dateOnSaleFrom = models.DateTimeField()
+    # dateOnSaleFromGmt = models.DateTimeField()
+    # dateOnSaleTo = models.DateTimeField()
+    # dateOnSaleToGmt = models.DateTimeField()
     priceHtml = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    onSale = models.BooleanField()
+    onSale = models.BooleanField(default=False)
     purchasable = models.BooleanField()
     totalSales = models.IntegerField()
     # virtual = models.BooleanField()
@@ -122,7 +122,7 @@ class Product(models.Model):
     # menuOrder = models.IntegerField()
     #   List<dynamic> metaData;
     #   Links links;
-    decimals = models.IntegerField()
+    # decimals = models.IntegerField()
     vendor = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
