@@ -80,7 +80,7 @@ class Product(models.Model):
     # dateOnSaleToGmt = models.DateTimeField()
     priceHtml = models.CharField(max_length=100, default = DEFAULT_VALUE)
     onSale = models.BooleanField(default=False)
-    purchasable = models.BooleanField()
+    # purchasable = models.BooleanField()
     totalSales = models.IntegerField()
     # virtual = models.BooleanField()
     #     downloadable = models.BooleanField()
@@ -160,3 +160,32 @@ class StoreModel(models.Model):
     averageRating = models.DecimalField()
     ratingCount = models.IntegerField()
     productsCount = models.IntegerField()
+
+
+class AvailableVariation(models.Model):
+  String availabilityHtml;
+  bool backordersAllowed;
+  Dimensions dimensions;
+  String dimensionsHtml;
+  double displayPrice;
+  double displayRegularPrice;
+  AvailableVariationImage image;
+  String imageId;
+  bool isDownloadable;
+  bool isInStock;
+  bool isPurchasable;
+  String isSoldIndividually;
+  bool isVirtual;
+  int maxQty;
+  int minQty;
+  String priceHtml;
+  String sku;
+  String variationDescription;
+  int variationId;
+  bool variationIsActive;
+  bool variationIsVisible;
+  String weight;
+  String weightHtml;
+  List<Option> option;
+  String formattedPrice;
+  String formattedSalesPrice;
