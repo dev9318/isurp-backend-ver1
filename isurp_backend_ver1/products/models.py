@@ -54,6 +54,40 @@ class ProductCategory(models.Model):
     slug = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
+class AvailableVariationImage(models.Model):
+  String title;
+  String url;
+#   String src;
+#   String fullSrc;
+
+
+class Option():
+  String key;
+  String value;
+
+
+
+class AvailableVariation(models.Model):
+  Dimensions dimensions;
+  double displayPrice;
+  double displayRegularPrice;
+  AvailableVariationImage image;
+  bool isInStock;
+  bool isPurchasable;
+  String sku;
+  String variationDescription;
+  int variationId;
+  List<Option> option;
+  String formattedPrice;
+  String formattedSalesPrice;
+
+
+class VariationOption(models.Model):
+  String name;
+  List<String> options;
+  String attribute;
+  String selected;
+
 
 class Product(models.Model):
     _id = models.ObjectIdField()
@@ -161,31 +195,3 @@ class StoreModel(models.Model):
     ratingCount = models.IntegerField()
     productsCount = models.IntegerField()
 
-
-class AvailableVariation(models.Model):
-  String availabilityHtml;
-  bool backordersAllowed;
-  Dimensions dimensions;
-  String dimensionsHtml;
-  double displayPrice;
-  double displayRegularPrice;
-  AvailableVariationImage image;
-  String imageId;
-  bool isDownloadable;
-  bool isInStock;
-  bool isPurchasable;
-  String isSoldIndividually;
-  bool isVirtual;
-  int maxQty;
-  int minQty;
-  String priceHtml;
-  String sku;
-  String variationDescription;
-  int variationId;
-  bool variationIsActive;
-  bool variationIsVisible;
-  String weight;
-  String weightHtml;
-  List<Option> option;
-  String formattedPrice;
-  String formattedSalesPrice;
