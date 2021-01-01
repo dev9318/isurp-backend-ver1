@@ -55,15 +55,15 @@ class ProductCategory(models.Model):
 
 
 class AvailableVariationImage(models.Model):
-  String title;
-  String url;
+    title = 
+    url = 
 #   String src;
 #   String fullSrc;
 
 
 class Option():
-  String key;
-  String value;
+    key = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    value = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
 
