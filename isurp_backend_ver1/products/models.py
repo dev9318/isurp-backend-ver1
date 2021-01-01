@@ -55,8 +55,8 @@ class ProductCategory(models.Model):
 
 
 class AvailableVariationImage(models.Model):
-    title = 
-    url = 
+    title = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    url = models.CharField(max_length=100, default = DEFAULT_VALUE)
 #   String src;
 #   String fullSrc;
 
@@ -68,25 +68,25 @@ class Option():
 
 
 class AvailableVariation(models.Model):
-  Dimensions dimensions;
-  double displayPrice;
-  double displayRegularPrice;
-  AvailableVariationImage image;
-  bool isInStock;
-  bool isPurchasable;
-  String sku;
-  String variationDescription;
-  int variationId;
-  List<Option> option;
-  String formattedPrice;
-  String formattedSalesPrice;
+    dimensions = models.EmbeddedField(model_container = Dimensions)
+    displayPrice = models.DecimalField()
+    displayRegularPrice = models.DecimalField()
+    image = models.EmbeddedField(model_container = AvailableVariationImage)
+    isInStock = models.BooleanField()
+    isPurchasable = models.BooleanField()
+    sku = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    variationDescription = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    variationId = models.IntegerField()
+    option = models.ArrayField(model_container = Option)
+    formattedPrice = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    formattedSalesPrice = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
 class VariationOption(models.Model):
-  String name;
-  List<String> options;
-  String attribute;
-  String selected;
+    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # List<String> options;
+    attribute = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    selected = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
 class Product(models.Model):
