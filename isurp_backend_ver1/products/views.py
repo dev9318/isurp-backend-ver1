@@ -39,12 +39,7 @@ class fetch_products():
             'downloadable': ,
             'externalUrl': product_query[i].externalUrl,
             'buttonText': product_query[i].buttonText,
-            'manageStock': ,
-            'stockQuantity': product_query[i].stockQuantity,
             'stockStatus': ,
-            'backorders': ,
-            'backordersAllowed': ,
-            'backordered': ,
             'soldIndividually': product_query[i].soldIndividually,
             'weight': product_query[i].weight,
             'dimensions': product_query[i].dimensions,
@@ -72,8 +67,32 @@ class fetch_products():
         return Response(response, status = 200)
 
 
-# class get_product(APIView):
+class get_product(APIView):
 
-#     def get(self,request):
+    def post(self,request):
 
-#         pid = request
+        pid = request.data.get('product_id')
+
+        pid = int(pid)'
+        
+        try:
+            product_query = Product.objects.get(_id = pid)
+
+
+            '
+
+
+class get_product_sku(APIView):
+
+    def post(self,request):
+
+        pid = request.data.get('sku')
+
+        
+        try:
+            product_query = Product.objects.get(sku = pid)
+
+
+
+            
+            '
