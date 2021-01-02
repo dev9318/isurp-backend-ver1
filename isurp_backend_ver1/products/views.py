@@ -36,10 +36,9 @@ class fetch_products():
             'purchasable': product_query[i].purchasable,
             'totalSales': product_query[i].totalSales,
             'virtual': product_query[i].virtual,
-            'downloadable': ,
             'externalUrl': product_query[i].externalUrl,
             'buttonText': product_query[i].buttonText,
-            'stockStatus': ,
+            'stockStatus': product_query[i].stockStatus,
             'soldIndividually': product_query[i].soldIndividually,
             'weight': product_query[i].weight,
             'dimensions': product_query[i].dimensions,
@@ -49,7 +48,6 @@ class fetch_products():
             'relatedIds': ,
             'upsellIds': ,
             'crossSellIds': ,
-            'purchaseNote': ,
             'categories': product_query[i].categories,
             'tags': ,
             'images': product_query[i].images,
@@ -58,7 +56,6 @@ class fetch_products():
             'availableVariations': ,
             'variationOptions': ,
             'vendor': product_query[i].vendor,
-            'children': ,
             })
             # 'metaData': json["meta_data"] == null ? null : List<MetaDatum>.from(json["meta_data"].map((x) => MetaDatum.fromJson(x))),
         
