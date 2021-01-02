@@ -59,3 +59,5 @@ class ReviewModel(models.Model):
     rating = models.CharField(max_length=100, default = DEFAULT_VALUE)
     avatar = models.CharField(max_length=100, default = DEFAULT_VALUE)
     date = models.DateTimeField()
+
+    objects = models.DjongoManager
