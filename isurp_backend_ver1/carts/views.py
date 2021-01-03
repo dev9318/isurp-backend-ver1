@@ -117,6 +117,7 @@ class add_to_cart(APIView):
         pid = int(pid)
         vid = int(vid)
         qnt = request.data.get('quantity')
+        qnt = int(qnt)
 
         try:
             cart_query = CartModel.objects.get(uid = uid)
@@ -125,20 +126,25 @@ class add_to_cart(APIView):
 
             cartContents = cart_query.cartContents
             cartTotals = cart_query.cartTotals
-            product_query = Product.objects.get(_id = pid)
+            product_query = Product.objects.get(_id = pid)  
 
-            
+            name = ''
+            index = 0
 
-            name = models.CharField(max_length=100, default = DEFAULT_VALUE)
-            thumb = models.CharField(max_length=100, default = DEFAULT_VALUE)
-            cartContents.append(CartContent())
-            cartContents[-1].key = key
-            cartContents[-1].productId = pid
-            cartContents[-1].variationId = vid
-            cartContents[-1].quantity = qnt
-            cartContents[-1].formattedPrice = product_query.
+            for i in range(len(product_query.availableVariations)):
+                if product_query.availableVariations.variationId == vid:
+                    index = i
 
-            cartTotals
+            formattedPrice =  product_query.availableVariations[index].formattedPrice
+            for i in range(len(product_query.availableVariations[index].option)):
+                name = name + product_query.availableVariations[index].option[i].value
+            thumb =  product_query.availableVariations[index].image.url
+
+            newItem = CartContent(key = key, productId = pid, variationId = vid, quantity = qnt, formattedPrice = formattedPrice, name = name, thumb = thumb)
+            cartContents.append(newItem)
+
+            cartTotals.subtotal = cartTotals.subtotal + qnt*float(formattedPrice)
+            cartTotals.total = cartTotals.total + qnt*float(formattedPrice)
             
             cart_query.cartContents = cartContents
             cart_query.cartTotals = cartTotals
