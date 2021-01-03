@@ -34,7 +34,7 @@ class CartContent(models.Model):
     # taxPrice = models.DecimalField()
     # regularPrice = models.DecimalField()
     # salesPrice = models.DecimalField()
-    loadingQty =  models.BooleanField()
+    # loadingQty =  models.BooleanField()
     formattedPrice = models.CharField(max_length=100, default = DEFAULT_VALUE)
     # formattedSalesPrice = models.CharField(max_length=100, default = DEFAULT_VALUE)
     # parentId = models.IntegerField()
