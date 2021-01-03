@@ -60,12 +60,14 @@ class remove_item(APIView):
             
             cart_query.save()
             data = {'status':'deleted'}
+            code = 200
             
         except:
             data = {'status':'No user'}
+            code = 400
 
         response = json.dumps(data)
-        return Response(response,status=200)
+        return Response(response,status=code)
 
 
 class change_qnt(APIView):
@@ -99,12 +101,14 @@ class change_qnt(APIView):
             
             cart_query.save()
             data = {'status':'deleted'}
+            code = 200
             
         except:
             data = {'status':'No user'}
+            code = 400
 
         response = json.dumps(data)
-        return Response(response,status=200)
+        return Response(response,status=code)
 
 
 class add_to_cart(APIView):
@@ -155,5 +159,5 @@ class add_to_cart(APIView):
             code = 400
         
         response = json.dumps({})
-        return Response(response,status=200)
+        return Response(response,status=code)
 
