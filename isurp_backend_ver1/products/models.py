@@ -112,7 +112,7 @@ class Product(models.Model):
     # dateOnSaleFromGmt = models.DateTimeField()
     # dateOnSaleTo = models.DateTimeField()
     # dateOnSaleToGmt = models.DateTimeField()
-    priceHtml = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # priceHtml = models.CharField(max_length=100, default = DEFAULT_VALUE)
     onSale = models.BooleanField(default=False)
     # purchasable = models.BooleanField()
     totalSales = models.IntegerField()
@@ -159,6 +159,8 @@ class Product(models.Model):
     #   Links links;
     # decimals = models.IntegerField()
     vendor = models.CharField(max_length=100, default = DEFAULT_VALUE)
+
+    objects = models.DjongoManager
 
 
 class VendorReviews(models.Model):
