@@ -19,12 +19,12 @@ class get_review(APIView):
         try:
             review_query = ReviewModel.objects.get(id = pid)
             data = {
-                '':review_query.author,
-                '':review_query.avatar,
-                '':review_query.email,
-                '':review_query.rating,
-                '':review_query.content,
-                '':review_query.date,
+                'author':review_query.author,
+                'avatar':review_query.avatar,
+                'email':review_query.email,
+                'rating':review_query.rating,
+                'content':review_query.content,
+                'date':review_query.date,
             }
             
             review_query.save()
