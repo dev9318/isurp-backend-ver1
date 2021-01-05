@@ -55,7 +55,7 @@ class ReviewModel(models.Model):
     id = models.CharField(max_length=100, default = DEFAULT_VALUE)
     author = models.CharField(max_length=100, default = DEFAULT_VALUE)
     email = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    content = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    content = models.TextField()
     rating = models.CharField(max_length=100, default = DEFAULT_VALUE)
     avatar = models.CharField(max_length=100, default = DEFAULT_VALUE)
     date = models.DateTimeField()
