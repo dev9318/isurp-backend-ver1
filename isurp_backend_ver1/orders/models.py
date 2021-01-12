@@ -101,4 +101,6 @@ class order(models.Model):
     #   List<dynamic> couponLines;
     # List<dynamic> refunds
     decimals = models.IntegerField()
-  
+    razorpay_payment_id = models.CharField(max_length=100)
+    razorpay_order_id = models.CharField(max_length=100)
+    razorpay_signature = models.CharField(max_length=100)
