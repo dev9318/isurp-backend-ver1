@@ -32,7 +32,11 @@ class verify_order(APIView):
             'razorpay_signature': razorpay_signature
         }
 
-        client.utility.verify_payment_signature(params_dict)
+        verified = client.utility.verify_payment_signature(params_dict)
+
+        customer_query = Order.objects.get(orderKey = order_id)
+        customer_query.verified = True
+        customer_query.save()
 
 
 
@@ -66,8 +70,10 @@ class return_order(APIView):
                 email = request.data.get('billing_email'),
                 phone = request.data.get('billing_phone')
                 ),
-            orderId = order_id,
-            cartModel = cart_query,   
+            orderKey = order_id,
+            cartModel = cart_query,
+            verified = False   
         )
+        customer_query.save()
 
         
