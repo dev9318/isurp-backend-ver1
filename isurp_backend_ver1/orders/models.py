@@ -50,7 +50,7 @@ class ShippingLine(models.Model):
 #   List<MetaDatum> metaData;
 
 
-class order(models.Model):
+class Order(models.Model):
     id = models.AutoField(primary_key=True)
     parentId = models.IntegerField()
     number = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -104,3 +104,4 @@ class order(models.Model):
     razorpay_payment_id = models.CharField(max_length=100)
     razorpay_order_id = models.CharField(max_length=100)
     razorpay_signature = models.CharField(max_length=100)
+    objects = models.DjongoManager()
