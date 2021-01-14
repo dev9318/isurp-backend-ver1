@@ -1,4 +1,5 @@
 from djongo import models
+from isurp_backend_ver1.carts.models import CartModel
 
 # Create your models here.
 
@@ -100,6 +101,7 @@ class Order(models.Model):
     # List<dynamic> feeLines;
     #   List<dynamic> couponLines;
     # List<dynamic> refunds
+    cartModel = models.EmbeddedField(model_container = CartModel)
     decimals = models.IntegerField()
     razorpay_payment_id = models.CharField(max_length=100)
     razorpay_order_id = models.CharField(max_length=100)
