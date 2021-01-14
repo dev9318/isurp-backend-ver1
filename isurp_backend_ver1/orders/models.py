@@ -53,42 +53,42 @@ class ShippingLine(models.Model):
 
 class Order(models.Model):
     id = models.AutoField(primary_key=True)
-    parentId = models.IntegerField()
+    # parentId = models.IntegerField()
     number = models.CharField(max_length=100, default = DEFAULT_VALUE)
     orderKey = models.CharField(max_length=100, default = DEFAULT_VALUE)
     createdVia = models.CharField(max_length=100, default = DEFAULT_VALUE)
     version = models.CharField(max_length=100, default = DEFAULT_VALUE)
     status = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    currency = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    currency = models.CharField(max_length=100, default = 'INR')
     dateCreated = models.DateTimeField()
-    dateCreatedGmt = models.DateTimeField()
+    # dateCreatedGmt = models.DateTimeField()
     dateModified = models.DateTimeField()
-    dateModifiedGmt = models.DateTimeField()
+    # dateModifiedGmt = models.DateTimeField()
     discountTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    discountTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # discountTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
     shippingTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    shippingTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    cartTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # shippingTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # cartTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
     total = models.CharField(max_length=100, default = DEFAULT_VALUE)
     totalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    pricesIncludeTax = models.BooleanField()
-    customerId = models.IntegerField()
-    customerIpAddress = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    customerUserAgent = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    customerNote = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # pricesIncludeTax = models.BooleanField()
+    # customerId = models.IntegerField()
+    # customerIpAddress = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # customerUserAgent = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # customerNote = models.CharField(max_length=100, default = DEFAULT_VALUE)
     billing = models.EmbeddedField(
         model_container = Address
     )
     shipping = models.EmbeddedField(
         model_container = Address
     )
-    paymentMethod = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    paymentMethodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    transactionId = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # paymentMethod = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # paymentMethodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    # transactionId = models.CharField(max_length=100, default = DEFAULT_VALUE)
     datePaid = models.DateTimeField()
-    datePaidGmt = models.DateTimeField()
+    # datePaidGmt = models.DateTimeField()
     dateCompleted = models.DateTimeField()
-    dateCompletedGmt = models.DateTimeField()
+    # dateCompletedGmt = models.DateTimeField()
     cartHash = models.CharField(max_length=100, default = DEFAULT_VALUE)
     #   List<MetaDatum> metaData;
     lineItems = models.ArrayField(
@@ -101,6 +101,7 @@ class Order(models.Model):
     # List<dynamic> feeLines;
     #   List<dynamic> couponLines;
     # List<dynamic> refunds
+    customerUID = models.CharField(max_length=100)
     cartModel = models.EmbeddedField(model_container = CartModel)
     decimals = models.IntegerField()
     razorpay_payment_id = models.CharField(max_length=100)
