@@ -107,4 +107,5 @@ class Order(models.Model):
     razorpay_payment_id = models.CharField(max_length=100)
     razorpay_order_id = models.CharField(max_length=100)
     razorpay_signature = models.CharField(max_length=100)
+    verified = models.BooleanField()
     objects = models.DjongoManager()

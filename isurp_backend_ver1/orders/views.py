@@ -72,7 +72,8 @@ class return_order(APIView):
                 ),
             orderKey = order_id,
             cartModel = cart_query,
-            verified = False   
+            verified = False,
+            customerUID = uid
         )
         customer_query.save()
 
