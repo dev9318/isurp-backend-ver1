@@ -6,11 +6,13 @@ DEFAULT_VALUE = ""
 # Create your models here.
 
 class Collection(models.Model):
+    _id = models.ObjectIdField()
     href = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
 class Links(models.Model):
-    self = models.ArrayField(model_container = Collection)
+    _id = models.ObjectIdField()
+    _self = models.ArrayField(model_container = Collection)
     collection =  models.ArrayField(model_container = Collection)
 
 
@@ -55,19 +57,22 @@ class ProductCategory(models.Model):
 
 
 class AvailableVariationImage(models.Model):
+    _id = models.ObjectIdField()
     title = models.CharField(max_length=100, default = DEFAULT_VALUE)
     url = models.CharField(max_length=100, default = DEFAULT_VALUE)
 #   String src;
 #   String fullSrc;
 
 
-class Option():
+class Option(models.Model):
+    _id = models.ObjectIdField()
     key = models.CharField(max_length=100, default = DEFAULT_VALUE)
     value = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
 
 class AvailableVariation(models.Model):
+    _id = models.ObjectIdField()
     dimensions = models.EmbeddedField(model_container = Dimensions)
     displayPrice = models.DecimalField()
     displayRegularPrice = models.DecimalField()
@@ -83,6 +88,7 @@ class AvailableVariation(models.Model):
 
 
 class VariationOption(models.Model):
+    _id = models.ObjectIdField()
     name = models.CharField(max_length=100, default = DEFAULT_VALUE)
     # List<String> options;
     attribute = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -177,10 +183,11 @@ class VendorReviews(models.Model):
 
 
 class Address(models.Model):
+    _id = models.ObjectIdField()
     street1 = models.TextField()
     street2 = models.TextField()
     city = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    zip = models.CharField(max_length=100, default = DEFAULT_VALUE)
+    _zip = models.CharField(max_length=100, default = DEFAULT_VALUE)
     country = models.CharField(max_length=100, default = DEFAULT_VALUE)
     state = models.CharField(max_length=100, default = DEFAULT_VALUE)
 

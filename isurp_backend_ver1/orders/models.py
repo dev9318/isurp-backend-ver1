@@ -6,7 +6,7 @@ from carts.models import CartModel
 DEFAULT_VALUE = ""
 
 class Address(models.Model):
-    id = models.AutoField(primary_key=True)
+    _id = models.ObjectIdField()
     # _id = models.ObjectIdField()
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
@@ -21,7 +21,7 @@ class Address(models.Model):
     phone = models.CharField(max_length=100)
 
 class LineItem(models.Model):
-    id = models.AutoField(primary_key=True)
+    _id = models.ObjectIdField()
     name = models.CharField(max_length=100, default = DEFAULT_VALUE)
     productId = models.IntegerField()
     variationId = models.IntegerField()
@@ -40,7 +40,7 @@ class LineItem(models.Model):
 
 
 class ShippingLine(models.Model):
-    id = models.AutoField(primary_key=True)
+    _id = models.ObjectIdField()
     methodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
     methodId = models.CharField(max_length=100, default = DEFAULT_VALUE)
     instanceId = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -52,7 +52,7 @@ class ShippingLine(models.Model):
 
 
 class Order(models.Model):
-    id = models.AutoField(primary_key=True)
+    _id = models.ObjectIdField()
     # parentId = models.IntegerField()
     number = models.CharField(max_length=100, default = DEFAULT_VALUE)
     orderKey = models.CharField(max_length=100, default = DEFAULT_VALUE)

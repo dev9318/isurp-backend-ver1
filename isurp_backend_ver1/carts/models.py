@@ -7,7 +7,8 @@ DEFAULT_VALUE = ''
 # Create your models here.
 
 class CartFee(models.Model):
-    id = models.CharField(max_length=100)
+    pk = models.ObjectIdField()
+    _id = models.CharField(max_length=100)
     name = models.CharField(max_length=100, default = DEFAULT_VALUE)
     amount = models.CharField(max_length=100, default = DEFAULT_VALUE)
     total = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -15,6 +16,7 @@ class CartFee(models.Model):
 
 class CartContent(models.Model):
     #   List<dynamic> addons;
+    _id = models.ObjectIdField()
     key = models.CharField(max_length=100, default = DEFAULT_VALUE)
     productId = models.IntegerField()
     variationId = models.IntegerField()
@@ -68,7 +70,7 @@ class CartContent(models.Model):
 
 
 class CartTotals(models.Model):
-    _id = models.AutoField(primary_key=True)
+    _id = models.ObjectIdField()
     subtotal = models.IntegerField(max_length=100, default = DEFAULT_VALUE)
     # subtotalTax = models.CharField(max_length=100, default = DEFAULT_VALUE)
     shippingTotal = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -113,7 +115,7 @@ class CartTotals(models.Model):
 
 class CartModel(models.Model):
     #List<dynamic> appliedCoupons;
-    _id = models.AutoField(primary_key=True)
+    _id = models.ObjectIdField()
     uid = models.CharField(max_length=100)
     # taxDisplayCart = models.CharField(max_length=100)
     # CartSessionData cartSessionData = 
