@@ -1,4 +1,5 @@
 from djongo import models
+from datetime import datetime 
 
 
 
@@ -55,9 +56,9 @@ class ReviewModel(models.Model):
     _id = models.CharField(max_length=100, default = DEFAULT_VALUE)
     author = models.CharField(max_length=100, default = DEFAULT_VALUE)
     email = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    content = models.TextField()
+    content = models.TextField(default = DEFAULT_VALUE)
     rating = models.CharField(max_length=100, default = DEFAULT_VALUE)
     avatar = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=datetime.now, blank=True)
 
-    objects = models.DjongoManager
+    objects = models.DjongoManager()

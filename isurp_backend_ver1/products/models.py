@@ -1,4 +1,5 @@
 from djongo import models
+from datetime import datetime 
 
 
 DEFAULT_VALUE = ""
@@ -34,10 +35,10 @@ class DefaultAttribute(models.Model):
 class ProductImage(models.Model):
     _id = models.ObjectIdField()
     productId = models.CharField(max_length=100)
-    dateCreated = models.DateTimeField()
-    dateCreatedGmt = models.DateTimeField()
-    dateModified = models.DateTimeField()
-    dateModifiedGmt = models.DateTimeField()
+    dateCreated = models.DateTimeField(default=datetime.now, blank=True)
+    # dateCreatedGmt = models.DateTimeField(default=datetime.now, blank=True)
+    dateModified = models.DateTimeField(default=datetime.now, blank=True)
+    # dateModifiedGmt = models.DateTimeField(default=datetime.now, blank=True)
     src = models.CharField(max_length=100, default = DEFAULT_VALUE)
     name = models.CharField(max_length=100, default = DEFAULT_VALUE)
 #   String alt;
@@ -100,16 +101,16 @@ class Product(models.Model):
     name = models.CharField(max_length=100, default = DEFAULT_VALUE)
     slug = models.CharField(max_length=100, default = DEFAULT_VALUE)
     permalink = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    dateCreated = models.DateTimeField()
-    dateCreatedGmt = models.DateTimeField()
-    dateModified = models.DateTimeField()
-    dateModifiedGmt = models.DateTimeField()
+    dateCreated = models.DateTimeField(default=datetime.now, blank=True)
+    # dateCreatedGmt = models.DateTimeField(default=datetime.now, blank=True)
+    dateModified = models.DateTimeField(default=datetime.now, blank=True)
+    # dateModifiedGmt = models.DateTimeField(default=datetime.now, blank=True)
     type1 = models.CharField(max_length=100, default = 'variable')
     status = models.CharField(max_length=100, default = DEFAULT_VALUE)
     # featured = models.BooleanField()
     # catalogVisibility = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    description = models.TextField()
-    shortDescription = models.TextField()
+    description = models.TextField(default = DEFAULT_VALUE)
+    shortDescription = models.TextField(default = DEFAULT_VALUE)
     sku = models.CharField(max_length=100, default = DEFAULT_VALUE)
     price = models.CharField(max_length=100, default = DEFAULT_VALUE)
     regularPrice = models.CharField(max_length=100, default = DEFAULT_VALUE)
@@ -166,7 +167,7 @@ class Product(models.Model):
     # decimals = models.IntegerField()
     vendor = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
-    objects = models.DjongoManager
+    objects = models.DjongoManager()
 
 
 # class VendorReviews(models.Model):

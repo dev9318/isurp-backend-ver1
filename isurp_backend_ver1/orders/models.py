@@ -1,5 +1,6 @@
 from djongo import models
 from carts.models import CartModel
+from datetime import datetime 
 
 # Create your models here.
 
@@ -11,13 +12,13 @@ class Address(models.Model):
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
-    address1 = models.TextField()
-    address2 = models.TextField()
+    address1 = models.TextField(default = DEFAULT_VALUE)
+    address2 = models.TextField(default = DEFAULT_VALUE)
     city = models.CharField(max_length=100)
     postcode = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(default = DEFAULT_VALUE)
     phone = models.CharField(max_length=100)
 
 class LineItem(models.Model):
@@ -85,9 +86,9 @@ class Order(models.Model):
     # paymentMethod = models.CharField(max_length=100, default = DEFAULT_VALUE)
     # paymentMethodTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
     # transactionId = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    datePaid = models.DateTimeField()
+    datePaid = models.DateTimeField(default=datetime.now, blank=True)
     # datePaidGmt = models.DateTimeField()
-    dateCompleted = models.DateTimeField()
+    dateCompleted = models.DateTimeField(default=datetime.now, blank=True)
     # dateCompletedGmt = models.DateTimeField()
     cartHash = models.CharField(max_length=100, default = DEFAULT_VALUE)
     #   List<MetaDatum> metaData;
