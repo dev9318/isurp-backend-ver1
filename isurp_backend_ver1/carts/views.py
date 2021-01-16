@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
 from .models import CartModel, CartContent
-from isurp_backend_ver1.products.models import Product
+from products.models import Product
 import uuid
 
 # Create your views here.
