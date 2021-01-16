@@ -8,7 +8,9 @@ from .models import Product
 # Create your views here.
 
 
-class fetch_products():
+class fetch_products(APIView):
+    authentication_classes = []
+    permission_classes = []
 
     def post(self, request):
 
@@ -57,6 +59,8 @@ class fetch_products():
 
 
 class get_product(APIView):
+    authentication_classes = []
+    permission_classes = []
 
     def post(self,request):
 
@@ -110,6 +114,8 @@ class get_product(APIView):
 
 
 class get_product_sku(APIView):
+    authentication_classes = []
+    permission_classes = []
 
     def post(self,request):
 
