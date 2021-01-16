@@ -1,5 +1,5 @@
 from djongo import models
-from isurp_backend_ver1.carts.models import CartModel
+from carts.models import CartModel
 
 # Create your models here.
 

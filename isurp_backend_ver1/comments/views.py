@@ -6,7 +6,7 @@ from rest_framework import authentication, permissions
 from .models import ReviewModel
 import uuid
 from datetime import datetime
-from isurp_backend_ver1.customers.models import Customer
+from customers.models import Customer
 
 
 # Create your views here.

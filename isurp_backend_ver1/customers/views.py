@@ -3,7 +3,7 @@ import json
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
-from isurp_backend_ver1.carts.models import CartModel
+from carts.models import CartModel
 from .models import Customer
 
 

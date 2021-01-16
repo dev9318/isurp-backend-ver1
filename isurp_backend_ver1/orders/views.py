@@ -5,7 +5,7 @@ from rest_framework import authentication, permissions
 from .models import Order, Address
 import uuid
 from datetime import datetime
-from isurp_backend_ver1.carts.models import CartModel, CartContent
+from carts.models import CartModel, CartContent
 import razorpay
 
 
