@@ -41,7 +41,7 @@ class get_customer(APIView):
         return Response(response, status= 200)
 
 
-class Update_Address(APIView):
+class update_address(APIView):
 
     authentication_classes = []
     permission_classes = []
