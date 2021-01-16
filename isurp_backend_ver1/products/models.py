@@ -74,8 +74,8 @@ class Option(models.Model):
 class AvailableVariation(models.Model):
     _id = models.ObjectIdField()
     dimensions = models.EmbeddedField(model_container = Dimensions)
-    displayPrice = models.DecimalField()
-    displayRegularPrice = models.DecimalField()
+    displayPrice = models.DecimalField(max_digits=12, decimal_places=2)
+    displayRegularPrice = models.DecimalField(max_digits=12, decimal_places=2)
     image = models.EmbeddedField(model_container = AvailableVariationImage)
     isInStock = models.BooleanField()
     isPurchasable = models.BooleanField()
@@ -169,39 +169,39 @@ class Product(models.Model):
     objects = models.DjongoManager
 
 
-class VendorReviews(models.Model):
-    _id = models.ObjectIdField()
-    vendorId = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    authorId = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    authorName = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    authorEmail = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    reviewTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    reviewDescription = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    reviewRating = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    approved = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    created = models.DateTimeField()
+# class VendorReviews(models.Model):
+#     _id = models.ObjectIdField()
+#     vendorId = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     authorId = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     authorName = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     authorEmail = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     reviewTitle = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     reviewDescription = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     reviewRating = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     approved = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     created = models.DateTimeField()
 
 
-class Address(models.Model):
-    _id = models.ObjectIdField()
-    street1 = models.TextField()
-    street2 = models.TextField()
-    city = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    _zip = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    country = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    state = models.CharField(max_length=100, default = DEFAULT_VALUE)
+# class Address(models.Model):
+#     _id = models.ObjectIdField()
+#     street1 = models.TextField()
+#     street2 = models.TextField()
+#     city = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     _zip = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     country = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     state = models.CharField(max_length=100, default = DEFAULT_VALUE)
 
 
-class StoreModel(models.Model):
-    _id = models.ObjectIdField()
-    name = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    icon = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    banner = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    address = models.EmbeddedField(model_container = Address)
-    description = models.TextField()
-    latitude = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    longitude = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    averageRating = models.DecimalField()
-    ratingCount = models.IntegerField()
-    productsCount = models.IntegerField()
+# class StoreModel(models.Model):
+#     _id = models.ObjectIdField()
+#     name = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     icon = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     banner = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     address = models.EmbeddedField(model_container = Address)
+#     description = models.TextField()
+#     latitude = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     longitude = models.CharField(max_length=100, default = DEFAULT_VALUE)
+#     averageRating = models.DecimalField(max_digits=12, decimal_places=2)
+#     ratingCount = models.IntegerField()
+#     productsCount = models.IntegerField()
 

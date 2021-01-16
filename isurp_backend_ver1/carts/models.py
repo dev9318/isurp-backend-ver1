@@ -7,7 +7,7 @@ DEFAULT_VALUE = ''
 # Create your models here.
 
 class CartFee(models.Model):
-    pk = models.ObjectIdField()
+    p = models.ObjectIdField()
     _id = models.CharField(max_length=100)
     name = models.CharField(max_length=100, default = DEFAULT_VALUE)
     amount = models.CharField(max_length=100, default = DEFAULT_VALUE)

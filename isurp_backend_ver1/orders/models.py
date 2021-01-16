@@ -35,7 +35,7 @@ class LineItem(models.Model):
     # List<dynamic> taxes = 
     #   List<LineItemMetaDatum> metaData;
     sku = models.CharField(max_length=100, default = DEFAULT_VALUE)
-    price = models.DecimalField()
+    price = models.DecimalField(max_digits=12, decimal_places=2)
 
 
 
