@@ -22,6 +22,7 @@ class get_customer(APIView):
             customer_query = Customer.objects.get(uid = uid)
             data = {
                 'id': customer_query._id,
+                'uid': customer_query.uid,
                 'email': customer_query.email,
                 'firstName': customer_query.firstName,
                 'lastName': customer_query.lastName,
