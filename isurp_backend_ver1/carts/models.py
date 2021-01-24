@@ -116,6 +116,7 @@ class CartTotals(models.Model):
 class CartModel(models.Model):
     #List<dynamic> appliedCoupons;
     _id = models.ObjectIdField()
+    empty = models.BooleanField(default=True)
     uid = models.CharField(max_length=100)
     # taxDisplayCart = models.CharField(max_length=100)
     # CartSessionData cartSessionData = 
