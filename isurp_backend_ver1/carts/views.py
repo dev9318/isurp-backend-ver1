@@ -67,7 +67,10 @@ class remove_item(APIView):
             cart_query.cartContents = cartContents
             
             cart_query.save()
-            data = {
+            if cart_query.empty == True:
+                data = {'status':'empty'}
+            else:
+                data = {
                         'cartContents': cart_query.cartContents,
                         'cartNonce': cart_query.cartNonce,
                         'cartTotals': cart_query.cartTotals,
