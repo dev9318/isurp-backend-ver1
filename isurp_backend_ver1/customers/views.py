@@ -15,8 +15,8 @@ class get_customer(APIView):
     permission_classes = []
 
 
-    def get(self, request):
-        uid = request.query_params.get('uid')
+    def post(self, request):
+        uid = request.data.get('uid')
 
         try:
             customer_query = Customer.objects.get(uid = uid)
