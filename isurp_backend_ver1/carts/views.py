@@ -27,11 +27,13 @@ class get_cart(APIView):
                     'currency': cart_query.currency,
                     'cartFees': cart_query.cartFees,
                 }
+            code = 200
         except:
             data = {'status':'No user'}
+            code = 400
         
         response = json.dumps(data)
-        return Response(response, status= 200)
+        return Response(response, status= code)
 
 
 class remove_item(APIView):
