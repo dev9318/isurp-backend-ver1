@@ -3,9 +3,9 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('get-cart', views.get_cart),
-    path('remove-item', views.remove_item),
-    path('change-qnt', views.change_qnt),
-    path('add-to-cart', views.add_to_cart),
+    path('getcart', views.get_cart),
+    path('removeitem', views.remove_item),
+    path('changeqnt', views.change_qnt),
+    path('addtocart', views.add_to_cart),
     path('clear', views.clear_cart),
 ]
