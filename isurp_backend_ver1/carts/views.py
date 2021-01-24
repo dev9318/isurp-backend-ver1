@@ -57,14 +57,23 @@ class remove_item(APIView):
                     break
             
             if flag:
-                cart_query.cartTotals.total = cart_query.cartTotals.total - cartContents[index].quantity*int(cartContents[index].formattedPrice)
-                del cartContents[index]
+                if len(cartContents) == 1:
+                    cart_query.empty = True
+                else:
+                    cart_query.cartTotals.total = cart_query.cartTotals.total - cartContents[index].quantity*int(cartContents[index].formattedPrice)
+                    del cartContents[index]
                 
             
             cart_query.cartContents = cartContents
             
             cart_query.save()
-            data = {'status':'deleted'}
+            data = {
+                        'cartContents': cart_query.cartContents,
+                        'cartNonce': cart_query.cartNonce,
+                        'cartTotals': cart_query.cartTotals,
+                        'currency': cart_query.currency,
+                        'cartFees': cart_query.cartFees,
+                    }
             code = 200
             
         except:
@@ -105,7 +114,13 @@ class change_qnt(APIView):
             cart_query.cartTotals = cartTotals
             
             cart_query.save()
-            data = {'status':'deleted'}
+            data = {
+                        'cartContents': cart_query.cartContents,
+                        'cartNonce': cart_query.cartNonce,
+                        'cartTotals': cart_query.cartTotals,
+                        'currency': cart_query.currency,
+                        'cartFees': cart_query.cartFees,
+                    }
             code = 200
             
         except:
@@ -137,6 +152,12 @@ class add_to_cart(APIView):
             cartTotals = cart_query.cartTotals
             product_query = Product.objects.get(_id = pid)  
 
+            if cart_query.empty == True:
+                cart_query.empty = False
+                cartContents = []
+                cartTotals.subtotal = 0
+                cartTotals.total = 0
+
             name = ''
             index = 0
 
@@ -157,12 +178,19 @@ class add_to_cart(APIView):
             
             cart_query.cartContents = cartContents
             cart_query.cartTotals = cartTotals
-
+            data = {
+                        'cartContents': cart_query.cartContents,
+                        'cartNonce': cart_query.cartNonce,
+                        'cartTotals': cart_query.cartTotals,
+                        'currency': cart_query.currency,
+                        'cartFees': cart_query.cartFees,
+                    }
             code = 200
         
         except:
+            data = {'message': 'error occured'}
             code = 400
         
-        response = json.dumps({})
+        response = json.dumps(data)
         return Response(response,status=code)
 
