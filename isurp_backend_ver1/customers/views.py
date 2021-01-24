@@ -65,13 +65,13 @@ class update_address(APIView):
 
             customer_query.save()
 
-            code = '200'
+            code = 200
         except:
-            code = '500'
+            code = 500
 
-        data = json.dumps({'code':code})        
+        data = json.dumps({'code':str(code)})        
 
-        return Response(data, status = 200)
+        return Response(data, status = code)
         
 
 
