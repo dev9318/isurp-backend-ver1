@@ -20,13 +20,16 @@ class get_cart(APIView):
 
         try:
             cart_query = CartModel.objects.get(uid = uid)
-            data = {
-                    'cartContents': cart_query.cartContents,
-                    'cartNonce': cart_query.cartNonce,
-                    'cartTotals': cart_query.cartTotals,
-                    'currency': cart_query.currency,
-                    'cartFees': cart_query.cartFees,
-                }
+            if cart_query.empty == True:
+                data = {'status':'empty'}
+            else:
+                data = {
+                        'cartContents': cart_query.cartContents,
+                        'cartNonce': cart_query.cartNonce,
+                        'cartTotals': cart_query.cartTotals,
+                        'currency': cart_query.currency,
+                        'cartFees': cart_query.cartFees,
+                    }
             code = 200
         except:
             data = {'status':'No user'}
