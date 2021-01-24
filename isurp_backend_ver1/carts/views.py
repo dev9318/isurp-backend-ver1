@@ -197,3 +197,24 @@ class add_to_cart(APIView):
         response = json.dumps(data)
         return Response(response,status=code)
 
+
+class clear_cart(APIView):
+
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request):
+        uid = request.query_params.get('uid')
+
+        try:
+            cart_query = CartModel.objects.get(uid = uid)
+            cart_query.empty = True
+            cart_query.save()
+            data = {'status':'Cleared'}
+            code = 200
+        except:
+            data = {'status':'No user'}
+            code = 400
+        
+        response = json.dumps(data)
+        return Response(response, status= code)
