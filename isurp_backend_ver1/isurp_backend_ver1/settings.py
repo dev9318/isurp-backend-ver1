@@ -82,6 +82,10 @@ DATABASES = {
     'default': {
            'ENGINE': 'djongo',
            'NAME': 'mydb',
+           'HOST': 'mongodb+srv://dev:<dev@1234>@cluster0.c5atl.mongodb.net/<mydb>?retryWrites=true&w=majority',
+           'USER': 'dev',
+           'PASSWORD': 'dev@1234',
+
        }
 }
 
