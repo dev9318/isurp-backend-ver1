@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from .constants import BASE_URL
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = '8qrz35o1f0=z=@o(q=9di5i)o*2n*n50*+tqa-$s379^bvqb$+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -80,13 +81,16 @@ WSGI_APPLICATION = 'isurp_backend_ver1.wsgi.application'
 
 DATABASES = {
     'default': {
-           'ENGINE': 'djongo',
-           'NAME': 'mydb',
-           'HOST': 'mongodb+srv://dev:<dev@1234>@cluster0.c5atl.mongodb.net/<mydb>?retryWrites=true&w=majority',
-           'USER': 'dev',
-           'PASSWORD': 'dev@1234',
-
-       }
+        'ENGINE': 'djongo',
+        #    'NAME': 'mydb',
+        #    'HOST': 'mongodb+srv://dev:<dev@1234>@cluster0.c5atl.mongodb.net/<mydb>?retryWrites=true&w=majority',
+        #    'USER': 'dev',
+        #    'PASSWORD': 'dev@1234',
+        'NAME': 'isurp_db',
+        'HOST': 'localhost',  # 192.168.0.106',
+        'PORT': 27017,
+        'ENFORCE_SCHEMA': False,
+    }
 }
 
 
@@ -127,3 +131,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
+
+if BASE_URL == "http://127.0.0.1:8000":
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+else:
+    STATIC_ROOT = "/projects/isurp/static_local"
+    # STATICFILES_DIRS = [
+    #     os.path.join(BASE_DIR, 'carts/static/'),
+    #     os.path.join(BASE_DIR, 'comments/static/'),
+    #     os.path.join(BASE_DIR, 'customers/static/'),
+    #     os.path.join(BASE_DIR, 'orders/static/'),
+    #     os.path.join(BASE_DIR, 'products/static/'),
+    # ]
